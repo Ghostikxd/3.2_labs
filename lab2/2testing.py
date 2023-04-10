@@ -12,7 +12,7 @@ print("\nСредние значения для столбцов 3-6:\n", avg_va
 
 # 3
 data["month"] = data["date"].dt.month
-print("\nПервые 5 строк DataFrame с добавленным столбцом 'month':\n", data.head())
+print("\nDataFrame с добавленным столбцом 'month':\n", data.head())
 
 # 4
 volume_by_ticker = data.groupby("ticker")["volume"].sum()
