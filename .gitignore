@@ -1,2 +1,3 @@
-sp_data2.csv
-sp500hst.txt
+*.txt
+*.csv
+*.xlsx
