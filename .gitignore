@@ -5,3 +5,7 @@ IOiMO.py
 *.xml
 *.json
 *.pickle
+IOiMO2.py
+*.h5
+*.npz
+*.hdf5
