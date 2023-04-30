@@ -9,3 +9,6 @@ IOiMO2.py
 *.h5
 *.npz
 *.hdf5
+*.ipynb
+*.sqlite
+*.db
