@@ -12,3 +12,6 @@ IOiMO2.py
 *.ipynb
 *.sqlite
 *.db
+*.zip
+reviews_full
+recipes_full
