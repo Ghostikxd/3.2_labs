@@ -10,7 +10,7 @@ import queue
 
 
 # 1
-""" # Число файлов, на которые разбиваем исходный файл
+# Число файлов, на которые разбиваем исходный файл
 n_files = 8
 
 # Читаем исходный файл recipes_full.csv построчно и записываем его в n_files файлов
@@ -32,13 +32,13 @@ with open('recipes_full.csv', 'r', encoding='utf-8') as f:
                 tags = row[5].strip('[]').replace("'", "").split(', ')
                 n_steps = row[6]
                 for tag in tags:
-                    writer.writerow([id_, tag, n_steps]) """
+                    writer.writerow([id_, tag, n_steps])
 
 
 # 2
 
 
-""" def calculate_avg_steps_by_tag(filename):
+def calculate_avg_steps_by_tag(filename):
     # Определяем словарь для хранения средних значений количества шагов по каждому тегу
     tag_avg_steps = {}
 
@@ -72,12 +72,12 @@ with open('recipes_full.csv', 'r', encoding='utf-8') as f:
 
 filename = 'id_tag_nsteps_0.csv'
 avg_steps_by_tag = calculate_avg_steps_by_tag(filename)
-print(avg_steps_by_tag) """
+print(avg_steps_by_tag)
 
 # 3
 
 
-""" def read_file(filename):
+def read_file(filename):
     # Читает данные из CSV-файла и возвращает словарь со средними значениями количества шагов для каждой метки.
     tag_counts = {}
     with open(filename, 'r', encoding='utf-8') as f:
@@ -130,12 +130,13 @@ if __name__ == '__main__':
     print(result)
 
     end_time = time.time()
-    print(f"Время выполнения: {end_time - start_time:.2f} секунд") """
+    print(
+        f"Время выполнения: {end_time - start_time:.2f} секунд")
 
 # 4
 
 
-""" def read_file(filename):
+def read_file(filename):
     # Читает данные из CSV-файла и возвращает словарь со средними значениями количества шагов для каждой метки.
     tag_counts = {}
     with open(filename, 'r', encoding='utf-8') as f:
@@ -189,7 +190,5 @@ if __name__ == '__main__':
 
     print(result)
     end_time = time.time()
-    print(f"Время выполнения: {end_time - start_time:.2f} секунд") """
-
-# 5
-# тяжелооооооооооооооо
+    print(
+        f"Время выполнения: {end_time - start_time:.2f} секунд")

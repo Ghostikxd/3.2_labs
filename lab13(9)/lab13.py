@@ -14,7 +14,7 @@ import shutil
 
 
 # 1
-""" # Путь к архиву recipes_full.zip
+# Путь к архиву recipes_full.zip
 zip_path = 'recipes_full.zip'
 
 # Имя папки внутри архива, содержащей файлы
@@ -31,30 +31,30 @@ with zipfile.ZipFile(zip_path, 'r') as zip:
 recipes = dd.read_csv(f'{folder_path}/{file_pattern}', parse_dates=['submitted'], assume_missing=True)
 
 # Вывод первых нескольких строк
-#print(recipes.head()) """
+#print(recipes.head())
 
 
 
 # 2
 
-""" print("Number of partitions:", recipes.npartitions)
+print("Number of partitions:", recipes.npartitions)
 print("\nColumn types:")
 print(recipes.dtypes)
-# нужен пункт 1 """
+# нужен пункт 1
 
 # 3
 
-""" # Вывод 5 первых строк
+# Вывод 5 первых строк
 print("Первые 5 строк:")
 print(recipes.head(5))
 
 # Вывод 5 последних строк
 print("Последние 5 строк:")
 print(recipes.tail(5))
-# нужен пункт 1 """
+# нужен пункт 1
 
 # 4 
-""" # Подсчет количества строк в каждом блоке
+# Подсчет количества строк в каждом блоке
 block_counts = recipes.map_partitions(len)
 
 # Выполнение вычислений и получение результатов
@@ -62,10 +62,10 @@ result = block_counts.compute()
 
 # Вывод результатов
 print(result)
-# нужен пункт 1 """
+# нужен пункт 1
 
 # 5
-""" # 5.1
+# 5.1
 # Нахождение максимума в столбце n_steps
 max_n_steps = recipes['n_steps'].max()
 
@@ -96,10 +96,10 @@ result = max_n_steps.compute()
 print("Максимальное значение n_steps:", result)
 
 # не робит  AttributeError: 'Scalar' object has no attribute '_plot' 
-# или  AttributeError: Attribute _plot not found """
+# или  AttributeError: Attribute _plot not found
 
 # 6
-""" # Преобразование столбца 'submitted' в тип даты
+# Преобразование столбца 'submitted' в тип даты
 recipes['submitted'] = recipes['submitted'].map_partitions(pd.to_datetime)
 
 # Установка столбца 'submitted' в качестве индекса
@@ -109,12 +109,12 @@ recipes = recipes.set_index('submitted')
 reviews_by_month = recipes.groupby(recipes.index.dt.to_period('M')).size()
 # для пунтка 8 reviews_by_month.to_csv('lab13reviews.csv', index=False)
 # Вывод результатов
-print(reviews_by_month.compute()) """
+print(reviews_by_month.compute())
 
 # 7
 
 
-""" def main():
+def main():
     folder_path = 'reviews_full'
     file_pattern = os.path.join(folder_path, 'reviews_*.json')
     file_list = sorted(glob.glob(file_pattern))
@@ -126,9 +126,9 @@ print(reviews_by_month.compute()) """
     df.to_csv('lab13reviews.csv', index=False)
 
 if __name__ == '__main__':
-    main() """
+    main()
 
-""" # Путь к папке с файлами CSV
+# Путь к папке с файлами CSV
 folder_path = r'D:\git\3.2_labs\lab12(8)\lab13reviews.csv'
 
 # Считывание файлов CSV в Dask DataFrame
@@ -144,9 +144,9 @@ average_ratings_series = average_ratings.to_series()
 # для пункта 8 average_ratings_series.to_csv('reviews_count.csv', index=False)
 # Выводим результат
 print(average_ratings_series) 
-#pandas.errors.ParserError: Error tokenizing data. C error: EOF inside string starting at row 214113 """
+#pandas.errors.ParserError: Error tokenizing data. C error: EOF inside string starting at row 214113
 
-""" # Путь к папке с частями файлов
+# Путь к папке с частями файлов
 folder_path = r'D:\git\3.2_labs\lab12(8)\lab13reviews.csv\*.part'
 
 # Список файлов в папке
@@ -178,10 +178,10 @@ df_last_5_combined = pd.concat(dfs_last_5)
 
 # Вывод последних 5 строк
 print("Последние 5 строк:")
-print(df_last_5_combined) """
+print(df_last_5_combined)
 
 # 8
-""" # Чтение файла с количеством отзывов по месяцам
+# Чтение файла с количеством отзывов по месяцам
 reviews_count = pd.read_csv('reviews_count.csv')
 
 # Чтение файла с средними значениями оценок по месяцам
@@ -191,4 +191,4 @@ average_ratings = pd.read_csv('average_ratings.csv')
 df = pd.merge(reviews_count, average_ratings, on='month')
 
 # Вывод полученного DataFrame
-print(df) """
+print(df)

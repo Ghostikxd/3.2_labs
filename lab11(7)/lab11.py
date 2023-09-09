@@ -9,23 +9,23 @@ import time
 filename = 'minutes_n_ingredients_full.hdf5'
 dataset = 'recipe'
 
-""" with h5py.File(filename, 'r') as f:
+with h5py.File(filename, 'r') as f:
     print(f.keys())
     data = da.from_array(f[dataset], chunks=(100_000, 3))
     print(data)
-    print(data.compute()) """
+    print(data.compute())
 
     # 2
 
-""" # Вычисление среднего значения по каждому столбцу, кроме первого
+# Вычисление среднего значения по каждому столбцу, кроме первого
     mean_values = da.mean(data[:, 1:], axis=0)
     # Вычисление среднего значения и получение результата в виде numpy.ndarray
     mean_values_computed = mean_values.compute()
     # Вывод средних значений
-    print(mean_values_computed) """
+    print(mean_values_computed)
 
 # 3
-""" chunks_values = [(100_000, 3), (50_000, 3), (25_000, 3)]
+chunks_values = [(100_000, 3), (50_000, 3), (25_000, 3)]
 
 for chunks in chunks_values:
     with h5py.File(filename, 'r') as f:
@@ -38,10 +38,10 @@ for chunks in chunks_values:
         end_time = time.time()
 
         # Вывод результатов
-        print(f"Chunks: {chunks}, Time: {end_time - start_time} seconds") """
+        print(f"Chunks: {chunks}, Time: {end_time - start_time} seconds")
 
 # 4
-""" with h5py.File(filename, 'r') as f:
+with h5py.File(filename, 'r') as f:
     data = da.from_array(f[dataset], chunks=(100_000, 3))
 # Вычислить медиану для каждого чанка массива
     chunk_medians = da.median(data, axis=0)
@@ -53,21 +53,21 @@ for chunks in chunks_values:
     selected_recipes = data[data[:, 1] < overall_median].compute()
 
     print("Selected Recipes:")
-    print(selected_recipes) """
+    print(selected_recipes)
 
 # 5
-""" with h5py.File(filename, 'r') as f:
+with h5py.File(filename, 'r') as f:
     data = da.from_array(f[dataset], chunks=(100_000, 3))
 
     counts = da.unique(data[:, 2], return_counts=True)
     for count in zip(counts[0].compute(), counts[1].compute()):
         print(count[0], count[1])
-    print(counts[1].sum().compute()) """
+    print(counts[1].sum().compute())
 
    
 # 6
 
-""" with h5py.File(filename, 'r') as f:
+with h5py.File(filename, 'r') as f:
     data = da.from_array(f[dataset], chunks=(100_000, 3))
 
     # Найти максимальную продолжительность рецепта
@@ -79,11 +79,11 @@ for chunks in chunks_values:
     # Ограничить максимальную продолжительность рецептов сверху 75-процентным квантилем
     max_duration_limited = da.minimum(max_duration, quantile_75)
 
-    print("Максимальная продолжительность рецепта:", max_duration_limited.compute()) """
+    print("Максимальная продолжительность рецепта:", max_duration_limited.compute())
 
 # 7
 
-""" with h5py.File(filename, 'r') as f:
+with h5py.File(filename, 'r') as f:
     data = da.from_array(f[dataset], chunks=(100_000, 3))
 
     # Ваши предпочтения относительно времени выполнения рецепта и количества ингредиентов
@@ -103,11 +103,11 @@ for chunks in chunks_values:
     most_similar_recipe = data[most_similar_recipe_index].compute()
 
     print("Наиболее похожий рецепт:")
-    print(most_similar_recipe) """
+    print(most_similar_recipe)
 
 # 8
 
-""" # Параметры блочного алгоритма
+# Параметры блочного алгоритма
 blocksize = 100000  # Размер блока
 
 with h5py.File(filename, 'r') as f:
@@ -128,4 +128,4 @@ with h5py.File(filename, 'r') as f:
     # Вычисление среднего значения
     mean_value = total_sum / total_count
 
-    print("Среднее значение второго столбца: ", mean_value) """
+    print("Среднее значение второго столбца: ", mean_value)
